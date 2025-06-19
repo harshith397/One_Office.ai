@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
@@ -20,14 +19,14 @@ const Hero = () => {
         {/* Main Headline */}
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
           <span style={{ textShadow: '0 2px 4px rgba(0,0,0,0.7)' }}>
-            Elevate Your
+            Transform Your
           </span>
           <br />
           <span 
             className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
             style={{ textShadow: 'none' }}
           >
-            Digital Presence
+            Enterprise Workflow
           </span>
         </h1>
 
