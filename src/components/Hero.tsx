@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
@@ -35,8 +36,7 @@ const Hero = () => {
           className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed"
           style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}
         >
-          Experience the perfect blend of sophistication and innovation. 
-          Our premium solutions are crafted for those who demand excellence.
+          Experience the perfect blend of AI-powered document conversion, intelligent email management, and secure RAG technology. Our enterprise solution ensures 100% privacy with fully offline capabilities for the most demanding organizations.
         </p>
 
         {/* CTA Buttons */}
