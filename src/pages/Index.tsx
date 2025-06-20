@@ -10,7 +10,7 @@ const Index = () => {
     <div className="min-h-screen bg-black relative overflow-hidden">
       {/* Top-right semi-circular spotlight */}
       <div 
-        className="absolute top-0 right-0 w-[300px] h-[300px] opacity-20"
+        className="fixed top-0 right-0 w-[300px] h-[300px] opacity-20 z-0"
         style={{
           background: 'radial-gradient(circle at 100% 0%, #3B0764 0%, #B32C76 40%, transparent 70%)',
           filter: 'blur(20px)',
@@ -19,16 +19,18 @@ const Index = () => {
       
       {/* Bottom-left semi-circular spotlight */}
       <div 
-        className="absolute bottom-0 left-0 w-[300px] h-[300px] opacity-20"
+        className="fixed bottom-0 left-0 w-[300px] h-[300px] opacity-20 z-0"
         style={{
           background: 'radial-gradient(circle at 0% 100%, #3B0764 0%, #B32C76 40%, transparent 70%)',
           filter: 'blur(20px)',
         }}
       />
       
-      {/* Main content overlay */}
-      <div className="relative z-10">
-        <Navigation />
+      {/* Navigation */}
+      <Navigation />
+      
+      {/* Main content with top padding to account for fixed nav */}
+      <div className="relative z-10 pt-20">
         <Hero />
         <Features />
         <Footer />
