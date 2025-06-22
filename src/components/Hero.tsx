@@ -1,24 +1,23 @@
-
 import React from 'react';
 import { ArrowRight, Sparkles } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section className="px-6 py-20 lg:py-32">
+    <section className="px-6 py-10 lg:py-16">
       <div className="max-w-7xl mx-auto text-center">
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600/20 to-pink-600/20 backdrop-blur-sm border border-purple-500/30 rounded-full px-4 py-2 mb-8">
+        <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600/20 to-pink-600/20 backdrop-blur-sm border border-purple-500/30 rounded-full px-4 py-2 mb-4">
           <Sparkles size={16} className="text-purple-400" />
           <span 
             className="text-sm text-white"
             style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}
           >
-            Premium Experience Awaits
+            Enterprise AI Solution Ready
           </span>
         </div>
 
         {/* Main Headline */}
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight">
           <span style={{ textShadow: '0 2px 4px rgba(0,0,0,0.7)' }}>
             Transform Your
           </span>
@@ -33,7 +32,7 @@ const Hero = () => {
 
         {/* Subtitle */}
         <p 
-          className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed"
+          className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed"
           style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}
         >
           Experience the perfect blend of AI-powered document conversion, intelligent email management, and secure RAG technology. Our enterprise solution ensures 100% privacy with fully offline capabilities for the most demanding organizations.
@@ -55,7 +54,7 @@ const Hero = () => {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-28 max-w-4xl mx-auto"> {/* Increased mt-20 to mt-28 */}
           <div className="text-center">
             <div 
               className="text-3xl md:text-4xl font-bold text-white mb-2"
@@ -76,13 +75,13 @@ const Hero = () => {
               className="text-3xl md:text-4xl font-bold text-white mb-2"
               style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}
             >
-              10k+
+              100+
             </div>
             <div 
               className="text-gray-400"
               style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}
             >
-              Happy Clients
+              Enterprise Clients
             </div>
           </div>
           

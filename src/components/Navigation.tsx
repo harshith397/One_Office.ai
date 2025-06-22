@@ -10,9 +10,9 @@ const Navigation = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 bg-black/20 backdrop-blur-md border-b border-white/10">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
-        <div className="text-white text-2xl font-bold">
+        <div className="text-white text-2xl font-regular">
           <span style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
-            Premium
+            One_Office.ai
           </span>
         </div>
 

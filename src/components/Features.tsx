@@ -1,28 +1,47 @@
-
 import React from 'react';
-import { Shield, Zap, Crown, Headphones } from 'lucide-react';
+import { Shield, FileText, Headphones, BarChart2, MailOpen, Plug, BookOpen } from 'lucide-react'; // Added BookOpen for RAG Document Intelligence
 
 const Features = () => {
   const features = [
     {
-      icon: Crown,
-      title: "Premium Quality",
-      description: "Experience unmatched quality with our meticulously crafted solutions designed for perfection."
+      icon: FileText,
+      title: "Smart Document Conversion",
+      description: "Convert documents across 50+ formats with AI-powered accuracy. Maintain formatting, extract data intelligently, and process thousands of files simultaneously with enterprise-grade reliability."
     },
     {
-      icon: Zap,
-      title: "Lightning Fast",
-      description: "Blazing fast performance that keeps you ahead of the competition with cutting-edge technology."
+      icon: MailOpen,
+      title: "AI Email Management",
+      description: "Generate contextual emails, automate responses, and manage communications with intelligent categorization. Our AI understands your business tone and maintains professional consistency."
     },
     {
       icon: Shield,
       title: "Enterprise Security",
-      description: "Bank-level security protocols ensure your data remains protected with military-grade encryption."
+      description: "Complete data sovereignty with on-premise deployment. Zero data leaves your infrastructure. Military-grade encryption ensures your sensitive information stays absolutely secure."
     },
     {
       icon: Headphones,
       title: "24/7 Support",
       description: "Round-the-clock premium support from our expert team whenever you need assistance."
+    },
+    {
+      icon: BarChart2,
+      title: "Advanced Analytics",
+      description: "Comprehensive insights into document workflows, email patterns, and productivity metrics. Make data-driven decisions with detailed reports and real-time dashboards."
+    },
+    {
+      icon: Plug,
+      title: "Seamless Integration",
+      description: "Connect with your existing enterprise tools via robust APIs. Works with Microsoft 365, Google Workspace, Slack, and 100+ business applications out of the box."
+    },
+    {
+      icon: BookOpen,
+      title: "RAG Document Intelligence",
+      description: "Intelligent document summarization and Q&A with advanced RAG technology. Extract insights, generate summaries, and find information across your entire document ecosystem instantly."
+    },
+    {
+      icon: Shield, // You can choose a more suitable icon if desired
+      title: "Online & Offline Enterprise Access",
+      description: "Enjoy uninterrupted productivity with both online and offline access to all enterprise tools. Our platform ensures seamless operation, robust security, and full functionality—whether you're connected to the cloud or working locally within your secure infrastructure."
     }
   ];
 
@@ -32,19 +51,22 @@ const Features = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 
-            className="text-3xl md:text-5xl font-bold text-white mb-4"
+            className="text-3xl md:text-5xl font-regular text-white mb-4"
             style={{ textShadow: '0 2px 4px rgba(0,0,0,0.7)' }}
           >
             Why Choose 
-            <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent ml-3">
-              Premium
+            <span
+              className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent ml-3"
+              style={{ textShadow: 'none' }}
+            >
+              One_Office.ai
             </span>
           </h2>
           <p 
             className="text-xl text-gray-300 max-w-2xl mx-auto"
             style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}
           >
-            Discover the features that set us apart and make us the preferred choice for industry leaders.
+            Discover the advanced AI capabilities that make us the preferred choice for enterprise leaders seeking secure, efficient, and intelligent office automation.
           </p>
         </div>
 
