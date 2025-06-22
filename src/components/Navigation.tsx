@@ -1,10 +1,12 @@
 
 import React from 'react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { useState } from 'react';
+import { useTheme } from '../contexts/ThemeContext';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <nav className="fixed top-6 left-6 right-6 z-50 px-6 py-4 bg-black/20 backdrop-blur-md border border-white/10 rounded-2xl max-w-6xl mx-auto">
@@ -39,6 +41,16 @@ const Navigation = () => {
           >
             Contact
           </a>
+          
+          {/* Theme Toggle Button */}
+          <button
+            onClick={toggleTheme}
+            className="p-2 text-white hover:text-purple-400 transition-colors duration-300 rounded-full hover:bg-white/10"
+            aria-label="Toggle theme"
+          >
+            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+          </button>
+          
           <button 
             className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2 rounded-full hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
           >
@@ -68,6 +80,16 @@ const Navigation = () => {
             <a href="#contact" className="block text-white hover:text-purple-400 transition-colors">
               Contact
             </a>
+            
+            {/* Mobile Theme Toggle */}
+            <button
+              onClick={toggleTheme}
+              className="flex items-center gap-2 text-white hover:text-purple-400 transition-colors w-full text-left"
+            >
+              {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+              <span>{theme === 'dark' ? 'Light Mode' : 'Dark Mode'}</span>
+            </button>
+            
             <button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2 rounded-full hover:from-purple-700 hover:to-pink-700 transition-all duration-300">
               Get Started
             </button>

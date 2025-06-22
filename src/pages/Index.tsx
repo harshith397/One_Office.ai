@@ -4,10 +4,13 @@ import Hero from '../components/Hero';
 import Navigation from '../components/Navigation';
 import Features from '../components/Features';
 import Footer from '../components/Footer';
+import { useTheme } from '../contexts/ThemeContext';
 
 const Index = () => {
+  const { theme } = useTheme();
+  
   return (
-    <div className="min-h-screen bg-black relative overflow-hidden">
+    <div className={`min-h-screen ${theme === 'dark' ? 'bg-black' : 'bg-white'} relative overflow-hidden`}>
       {/* Top-right semi-circular spotlight */}
       <div 
         className="fixed top-0 right-0 w-[300px] h-[300px] opacity-20 z-0"
