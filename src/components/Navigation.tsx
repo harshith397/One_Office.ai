@@ -7,8 +7,8 @@ const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 px-6 py-4 bg-black/20 backdrop-blur-md border-b border-white/10">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
+    <nav className="fixed top-6 left-6 right-6 z-50 px-6 py-4 bg-black/20 backdrop-blur-md border border-white/10 rounded-2xl max-w-6xl mx-auto">
+      <div className="flex items-center justify-between">
         {/* Logo */}
         <div className="text-white text-2xl font-regular">
           <span style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
@@ -57,7 +57,7 @@ const Navigation = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-black/90 backdrop-blur-sm border-b border-purple-500/20">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-black/90 backdrop-blur-sm border-b border-purple-500/20 rounded-b-2xl mt-2">
           <div className="px-6 py-4 space-y-4">
             <a href="#features" className="block text-white hover:text-purple-400 transition-colors">
               Features
