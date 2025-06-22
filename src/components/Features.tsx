@@ -1,7 +1,11 @@
+
 import React from 'react';
-import { Shield, FileText, Headphones, BarChart2, MailOpen, Plug, BookOpen } from 'lucide-react'; // Added BookOpen for RAG Document Intelligence
+import { Shield, FileText, Headphones, BarChart2, MailOpen, Plug, BookOpen } from 'lucide-react';
+import { useTheme } from '../contexts/ThemeContext';
 
 const Features = () => {
+  const { theme } = useTheme();
+  
   const features = [
     {
       icon: FileText,
@@ -39,7 +43,7 @@ const Features = () => {
       description: "Intelligent document summarization and Q&A with advanced RAG technology. Extract insights, generate summaries, and find information across your entire document ecosystem instantly."
     },
     {
-      icon: Shield, // You can choose a more suitable icon if desired
+      icon: Shield,
       title: "Online & Offline Enterprise Access",
       description: "Enjoy uninterrupted productivity with both online and offline access to all enterprise tools. Our platform ensures seamless operation, robust security, and full functionality—whether you're connected to the cloud or working locally within your secure infrastructure."
     }
@@ -51,8 +55,8 @@ const Features = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 
-            className="text-3xl md:text-5xl font-regular text-white mb-4"
-            style={{ textShadow: '0 2px 4px rgba(0,0,0,0.7)' }}
+            className={`text-3xl md:text-5xl font-regular ${theme === 'dark' ? 'text-white' : 'text-gray-900'} mb-4`}
+            style={{ textShadow: theme === 'dark' ? '0 2px 4px rgba(0,0,0,0.7)' : 'none' }}
           >
             Why Choose 
             <span
@@ -63,8 +67,8 @@ const Features = () => {
             </span>
           </h2>
           <p 
-            className="text-xl text-gray-300 max-w-2xl mx-auto"
-            style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}
+            className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} max-w-2xl mx-auto`}
+            style={{ textShadow: theme === 'dark' ? '0 1px 2px rgba(0,0,0,0.5)' : 'none' }}
           >
             Discover the advanced AI capabilities that make us the preferred choice for enterprise leaders seeking secure, efficient, and intelligent office automation.
           </p>
@@ -84,15 +88,15 @@ const Features = () => {
                 </div>
                 
                 <h3 
-                  className="text-xl font-semibold text-white mb-3"
-                  style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}
+                  className={`text-xl font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-900'} mb-3`}
+                  style={{ textShadow: theme === 'dark' ? '0 1px 2px rgba(0,0,0,0.5)' : 'none' }}
                 >
                   {feature.title}
                 </h3>
                 
                 <p 
-                  className="text-gray-400 leading-relaxed"
-                  style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}
+                  className={`${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} leading-relaxed`}
+                  style={{ textShadow: theme === 'dark' ? '0 1px 2px rgba(0,0,0,0.5)' : 'none' }}
                 >
                   {feature.description}
                 </p>

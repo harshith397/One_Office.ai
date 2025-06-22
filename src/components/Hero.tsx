@@ -1,7 +1,11 @@
+
 import React from 'react';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import { useTheme } from '../contexts/ThemeContext';
 
 const Hero = () => {
+  const { theme } = useTheme();
+  
   return (
     <section className="px-6 py-10 lg:py-16">
       <div className="max-w-7xl mx-auto text-center">
@@ -9,16 +13,16 @@ const Hero = () => {
         <div className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600/20 to-pink-600/20 backdrop-blur-sm border border-purple-500/30 rounded-full px-4 py-2 mb-4">
           <Sparkles size={16} className="text-purple-400" />
           <span 
-            className="text-sm text-white"
-            style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}
+            className={`text-sm ${theme === 'dark' ? 'text-white' : 'text-gray-800'}`}
+            style={{ textShadow: theme === 'dark' ? '0 1px 2px rgba(0,0,0,0.5)' : 'none' }}
           >
             Enterprise AI Solution Ready
           </span>
         </div>
 
         {/* Main Headline */}
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 leading-tight">
-          <span style={{ textShadow: '0 2px 4px rgba(0,0,0,0.7)' }}>
+        <h1 className={`text-4xl md:text-6xl lg:text-7xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'} mb-4 leading-tight`}>
+          <span style={{ textShadow: theme === 'dark' ? '0 2px 4px rgba(0,0,0,0.7)' : 'none' }}>
             Transform Your
           </span>
           <br />
@@ -32,8 +36,8 @@ const Hero = () => {
 
         {/* Subtitle */}
         <p 
-          className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed"
-          style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}
+          className={`text-xl md:text-2xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} mb-8 max-w-3xl mx-auto leading-relaxed`}
+          style={{ textShadow: theme === 'dark' ? '0 1px 2px rgba(0,0,0,0.5)' : 'none' }}
         >
           Experience the perfect blend of AI-powered document conversion, intelligent email management, and secure RAG technology. Our enterprise solution ensures 100% privacy with fully offline capabilities for the most demanding organizations.
         </p>
@@ -46,25 +50,25 @@ const Hero = () => {
           </button>
           
           <button 
-            className="px-8 py-4 border border-white/20 text-white rounded-full hover:bg-white/10 transition-all duration-300 backdrop-blur-sm font-semibold"
-            style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}
+            className={`px-8 py-4 border ${theme === 'dark' ? 'border-white/20 text-white' : 'border-gray-300 text-gray-800'} rounded-full ${theme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-gray-100'} transition-all duration-300 backdrop-blur-sm font-semibold`}
+            style={{ textShadow: theme === 'dark' ? '0 1px 2px rgba(0,0,0,0.5)' : 'none' }}
           >
             Learn More
           </button>
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-28 max-w-4xl mx-auto"> {/* Increased mt-20 to mt-28 */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-28 max-w-4xl mx-auto">
           <div className="text-center">
             <div 
-              className="text-3xl md:text-4xl font-bold text-white mb-2"
-              style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}
+              className={`text-3xl md:text-4xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'} mb-2`}
+              style={{ textShadow: theme === 'dark' ? '0 2px 4px rgba(0,0,0,0.5)' : 'none' }}
             >
               99.9%
             </div>
             <div 
-              className="text-gray-400"
-              style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}
+              className={`${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}
+              style={{ textShadow: theme === 'dark' ? '0 1px 2px rgba(0,0,0,0.5)' : 'none' }}
             >
               Uptime Guaranteed
             </div>
@@ -72,14 +76,14 @@ const Hero = () => {
           
           <div className="text-center">
             <div 
-              className="text-3xl md:text-4xl font-bold text-white mb-2"
-              style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}
+              className={`text-3xl md:text-4xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'} mb-2`}
+              style={{ textShadow: theme === 'dark' ? '0 2px 4px rgba(0,0,0,0.5)' : 'none' }}
             >
               100+
             </div>
             <div 
-              className="text-gray-400"
-              style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}
+              className={`${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}
+              style={{ textShadow: theme === 'dark' ? '0 1px 2px rgba(0,0,0,0.5)' : 'none' }}
             >
               Enterprise Clients
             </div>
@@ -87,14 +91,14 @@ const Hero = () => {
           
           <div className="text-center">
             <div 
-              className="text-3xl md:text-4xl font-bold text-white mb-2"
-              style={{ textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}
+              className={`text-3xl md:text-4xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'} mb-2`}
+              style={{ textShadow: theme === 'dark' ? '0 2px 4px rgba(0,0,0,0.5)' : 'none' }}
             >
               24/7
             </div>
             <div 
-              className="text-gray-400"
-              style={{ textShadow: '0 1px 2px rgba(0,0,0,0.5)' }}
+              className={`${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`}
+              style={{ textShadow: theme === 'dark' ? '0 1px 2px rgba(0,0,0,0.5)' : 'none' }}
             >
               Premium Support
             </div>
