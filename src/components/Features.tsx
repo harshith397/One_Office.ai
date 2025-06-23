@@ -1,12 +1,9 @@
-
 import React from 'react';
 import { FileText, MessageSquare, Shield, Zap, Globe, Users } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../contexts/ThemeContext';
 
 const Features = () => {
   const { theme } = useTheme();
-  const navigate = useNavigate();
 
   const features = [
     {
@@ -14,7 +11,7 @@ const Features = () => {
       title: 'AI Email Management',
       description: 'Transform your email workflow with intelligent composition, smart replies, and automated summarization.',
       clickable: true,
-      onClick: () => navigate('/email-management')
+      onClick: () => window.open('/email-management', '_blank')
     },
     {
       icon: <MessageSquare className="w-8 h-8" />,
