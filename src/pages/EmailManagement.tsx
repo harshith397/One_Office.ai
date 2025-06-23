@@ -139,6 +139,10 @@ const EmailManagement = () => {
 
   return (
     <div className={`h-screen ${theme === 'dark' ? 'bg-black' : 'bg-white'} relative overflow-hidden flex flex-col`}>
+      {/* Background gradients - same as main page */}
+      <div className="fixed top-0 right-0 w-[300px] h-[300px] opacity-20 z-0" style={{ background: 'radial-gradient(circle at 100% 0%, #3B0764 0%, #B32C76 40%, transparent 70%)', filter: 'blur(20px)' }} />
+      <div className="fixed bottom-0 left-0 w-[300px] h-[300px] opacity-20 z-0" style={{ background: 'radial-gradient(circle at 0% 100%, #3B0764 0%, #B32C76 40%, transparent 70%)', filter: 'blur(20px)' }} />
+
       {/* Custom scrollbar styles */}
       <style jsx>{`
         .custom-scrollbar::-webkit-scrollbar {
@@ -162,7 +166,7 @@ const EmailManagement = () => {
       `}</style>
 
       {/* Header */}
-      <nav className={`flex-shrink-0 px-6 py-4 ${theme === 'dark' ? 'bg-black/20' : 'bg-white/20'} backdrop-blur-md ${theme === 'dark' ? 'border-white/10' : 'border-gray-200/30'} border-b w-full`}>
+      <nav className={`flex-shrink-0 px-6 py-4 ${theme === 'dark' ? 'bg-black/20' : 'bg-white/20'} backdrop-blur-md ${theme === 'dark' ? 'border-white/10' : 'border-gray-200/30'} border-b w-full relative z-50`}>
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-4">
             <button
@@ -188,14 +192,10 @@ const EmailManagement = () => {
           </div>
         </div>
       </nav>
-      
-      {/* Background gradients */}
-      <div className="fixed top-0 right-0 w-[300px] h-[300px] opacity-20 z-0" style={{ background: 'radial-gradient(circle at 100% 0%, #3B0764 0%, #B32C76 40%, transparent 70%)', filter: 'blur(20px)' }} />
-      <div className="fixed bottom-0 left-0 w-[300px] h-[300px] opacity-20 z-0" style={{ background: 'radial-gradient(circle at 0% 100%, #3B0764 0%, #B32C76 40%, transparent 70%)', filter: 'blur(20px)' }} />
 
       <div className="flex flex-1 relative z-10 overflow-hidden">
         {/* Sidebar */}
-        <div className={`${sidebarOpen ? 'w-80' : 'w-0'} transition-all duration-300 ${theme === 'dark' ? 'bg-black/80' : 'bg-white/80'} backdrop-blur-md border-r ${theme === 'dark' ? 'border-white/20' : 'border-gray-200/40'} flex flex-col overflow-hidden flex-shrink-0`}>
+        <div className={`${sidebarOpen ? 'w-80' : 'w-0'} transition-all duration-300 ${theme === 'dark' ? 'bg-black/40' : 'bg-white/40'} backdrop-blur-md border-r ${theme === 'dark' ? 'border-white/20' : 'border-gray-200/40'} flex flex-col overflow-hidden flex-shrink-0`}>
           <div className="p-4 border-b border-inherit flex-shrink-0">
             <button onClick={createNewChat} className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-3 rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-300 flex items-center gap-2 shadow-lg">
               <Plus size={18} />
@@ -222,10 +222,10 @@ const EmailManagement = () => {
         </div>
 
         {/* Main Content */}
-        <div className="flex-1 flex flex-col min-w-0">
+        <div className="flex-1 flex flex-col min-w-0 bg-transparent">
           {!activeChat ? (
             /* Welcome Screen */
-            <div className="flex-1 flex flex-col items-center justify-center p-8">
+            <div className="flex-1 flex flex-col items-center justify-center p-8 bg-transparent">
               <div className="text-center mb-8">
                 <h1 className={`text-4xl md:text-5xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'} mb-4`}>
                   <span style={{ textShadow: theme === 'dark' ? '0 2px 4px rgba(0,0,0,0.7)' : 'none' }}>
@@ -244,22 +244,22 @@ const EmailManagement = () => {
           ) : (
             /* Chat Interface with Dashboard Layout */
             <>
-              {/* Chat Messages Area - Scrollable */}
-              <div className="flex-1 overflow-hidden relative">
+              {/* Chat Messages Area - Scrollable with transparent background */}
+              <div className="flex-1 overflow-hidden relative bg-transparent">
                 <div 
                   ref={chatContainerRef} 
                   onScroll={handleScroll} 
-                  className="h-full overflow-y-auto custom-scrollbar"
+                  className="h-full overflow-y-auto custom-scrollbar bg-transparent"
                   style={{ 
                     scrollBehavior: 'smooth',
                     paddingBottom: '1rem'
                   }}
                 >
-                  <div className="p-6">
+                  <div className="p-6 bg-transparent">
                     <div className="max-w-3xl mx-auto space-y-6">
                       {getCurrentChat()?.messages.map((msg) => (
                         <div key={msg.id} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                          <div className={`max-w-[80%] ${msg.role === 'user' ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white' : theme === 'dark' ? 'bg-white/5 text-white' : 'bg-gray-100 text-gray-900'} rounded-xl px-4 py-3`}>
+                          <div className={`max-w-[80%] ${msg.role === 'user' ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white' : theme === 'dark' ? 'bg-white/10 text-white backdrop-blur-sm' : 'bg-gray-100/80 text-gray-900 backdrop-blur-sm'} rounded-xl px-4 py-3`}>
                             <p className="text-sm leading-relaxed whitespace-pre-wrap">{msg.content}</p>
                           </div>
                         </div>
@@ -273,7 +273,7 @@ const EmailManagement = () => {
                 {showScrollToBottom && (
                   <button 
                     onClick={scrollToBottom} 
-                    className={`absolute bottom-4 right-6 p-3 rounded-full ${theme === 'dark' ? 'bg-white/10 hover:bg-white/20' : 'bg-gray-100 hover:bg-gray-200'} backdrop-blur-sm transition-all duration-300 shadow-lg z-10`}
+                    className={`absolute bottom-4 right-6 p-3 rounded-full ${theme === 'dark' ? 'bg-white/10 hover:bg-white/20' : 'bg-gray-100/80 hover:bg-gray-200/80'} backdrop-blur-sm transition-all duration-300 shadow-lg z-10`}
                   >
                     <ChevronDown size={20} className={theme === 'dark' ? 'text-white' : 'text-gray-800'} />
                   </button>
@@ -281,10 +281,10 @@ const EmailManagement = () => {
               </div>
 
               {/* Sticky Input Area */}
-              <div className={`flex-shrink-0 p-6 border-t ${theme === 'dark' ? 'border-white/10 bg-black/50' : 'border-gray-200/40 bg-white/50'} backdrop-blur-md`}>
+              <div className={`flex-shrink-0 p-6 border-t ${theme === 'dark' ? 'border-white/10 bg-black/30' : 'border-gray-200/40 bg-white/30'} backdrop-blur-md`}>
                 <div className="max-w-3xl mx-auto">
                   <div className="relative p-0.5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg">
-                    <div className={`relative ${theme === 'dark' ? 'bg-black' : 'bg-white'} rounded-lg`}>
+                    <div className={`relative ${theme === 'dark' ? 'bg-black/80' : 'bg-white/80'} backdrop-blur-sm rounded-lg`}>
                       <Textarea
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
@@ -304,11 +304,11 @@ const EmailManagement = () => {
                       />
                       
                       <div className="absolute bottom-3 right-3 flex items-center gap-2">
-                        <button className={`p-2 rounded-lg ${theme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-gray-200'} transition-colors`} aria-label="Upload file">
+                        <button className={`p-2 rounded-lg ${theme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-gray-200/50'} transition-colors`} aria-label="Upload file">
                           <Paperclip size={16} className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} />
                         </button>
                         
-                        <button onClick={handleSendMessage} disabled={!message.trim()} className={`p-2 rounded-lg transition-all duration-300 ${message.trim() ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700' : theme === 'dark' ? 'bg-white/10 text-gray-500' : 'bg-gray-200 text-gray-400'}`}>
+                        <button onClick={handleSendMessage} disabled={!message.trim()} className={`p-2 rounded-lg transition-all duration-300 ${message.trim() ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700' : theme === 'dark' ? 'bg-white/10 text-gray-500' : 'bg-gray-200/50 text-gray-400'}`}>
                           <Send size={16} />
                         </button>
                       </div>
@@ -325,10 +325,10 @@ const EmailManagement = () => {
 
           {/* Input Area for Welcome Screen */}
           {!activeChat && (
-            <div className={`flex-shrink-0 p-6 border-t ${theme === 'dark' ? 'border-white/10 bg-black/50' : 'border-gray-200/40 bg-white/50'} backdrop-blur-md`}>
+            <div className={`flex-shrink-0 p-6 border-t ${theme === 'dark' ? 'border-white/10 bg-black/30' : 'border-gray-200/40 bg-white/30'} backdrop-blur-md`}>
               <div className="max-w-2xl mx-auto">
                 <div className="relative p-0.5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg">
-                  <div className={`relative ${theme === 'dark' ? 'bg-black' : 'bg-white'} rounded-lg`}>
+                  <div className={`relative ${theme === 'dark' ? 'bg-black/80' : 'bg-white/80'} backdrop-blur-sm rounded-lg`}>
                     <Textarea
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
@@ -348,11 +348,11 @@ const EmailManagement = () => {
                     />
                     
                     <div className="absolute bottom-3 right-3 flex items-center gap-2">
-                      <button className={`p-2 rounded-lg ${theme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-gray-200'} transition-colors`} aria-label="Upload file">
+                      <button className={`p-2 rounded-lg ${theme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-gray-200/50'} transition-colors`} aria-label="Upload file">
                         <Paperclip size={16} className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} />
                       </button>
                       
-                      <button onClick={handleSendMessage} disabled={!message.trim()} className={`p-2 rounded-lg transition-all duration-300 ${message.trim() ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700' : theme === 'dark' ? 'bg-white/10 text-gray-500' : 'bg-gray-200 text-gray-400'}`}>
+                      <button onClick={handleSendMessage} disabled={!message.trim()} className={`p-2 rounded-lg transition-all duration-300 ${message.trim() ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700' : theme === 'dark' ? 'bg-white/10 text-gray-500' : 'bg-gray-200/50 text-gray-400'}`}>
                         <Send size={16} />
                       </button>
                     </div>
