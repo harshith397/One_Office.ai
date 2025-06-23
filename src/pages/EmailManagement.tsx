@@ -221,11 +221,11 @@ const EmailManagement = () => {
           </div>
         </div>
 
-        {/* Main Content */}
-        <div className="flex-1 flex flex-col min-w-0 bg-transparent">
+        {/* Main Content - Completely Transparent */}
+        <div className="flex-1 flex flex-col min-w-0">
           {!activeChat ? (
             /* Welcome Screen */
-            <div className="flex-1 flex flex-col items-center justify-center p-8 bg-transparent">
+            <div className="flex-1 flex flex-col items-center justify-center p-8">
               <div className="text-center mb-8">
                 <h1 className={`text-4xl md:text-5xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'} mb-4`}>
                   <span style={{ textShadow: theme === 'dark' ? '0 2px 4px rgba(0,0,0,0.7)' : 'none' }}>
@@ -242,20 +242,20 @@ const EmailManagement = () => {
               </div>
             </div>
           ) : (
-            /* Chat Interface with Dashboard Layout */
+            /* Chat Interface - Completely Transparent */
             <>
-              {/* Chat Messages Area - Scrollable with transparent background */}
-              <div className="flex-1 overflow-hidden relative bg-transparent">
+              {/* Chat Messages Area - Completely Transparent */}
+              <div className="flex-1 overflow-hidden relative">
                 <div 
                   ref={chatContainerRef} 
                   onScroll={handleScroll} 
-                  className="h-full overflow-y-auto custom-scrollbar bg-transparent"
+                  className="h-full overflow-y-auto custom-scrollbar"
                   style={{ 
                     scrollBehavior: 'smooth',
                     paddingBottom: '1rem'
                   }}
                 >
-                  <div className="p-6 bg-transparent">
+                  <div className="p-6">
                     <div className="max-w-3xl mx-auto space-y-6">
                       {getCurrentChat()?.messages.map((msg) => (
                         <div key={msg.id} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
@@ -280,11 +280,11 @@ const EmailManagement = () => {
                 )}
               </div>
 
-              {/* Sticky Input Area */}
-              <div className={`flex-shrink-0 p-6 border-t ${theme === 'dark' ? 'border-white/10 bg-black/30' : 'border-gray-200/40 bg-white/30'} backdrop-blur-md`}>
+              {/* Input Area - Only the input box has background */}
+              <div className="flex-shrink-0 p-6">
                 <div className="max-w-3xl mx-auto">
                   <div className="relative p-0.5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg">
-                    <div className={`relative ${theme === 'dark' ? 'bg-black/80' : 'bg-white/80'} backdrop-blur-sm rounded-lg`}>
+                    <div className={`relative ${theme === 'dark' ? 'bg-black/90' : 'bg-white/90'} backdrop-blur-sm rounded-lg`}>
                       <Textarea
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
@@ -325,10 +325,10 @@ const EmailManagement = () => {
 
           {/* Input Area for Welcome Screen */}
           {!activeChat && (
-            <div className={`flex-shrink-0 p-6 border-t ${theme === 'dark' ? 'border-white/10 bg-black/30' : 'border-gray-200/40 bg-white/30'} backdrop-blur-md`}>
+            <div className="flex-shrink-0 p-6">
               <div className="max-w-2xl mx-auto">
                 <div className="relative p-0.5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg">
-                  <div className={`relative ${theme === 'dark' ? 'bg-black/80' : 'bg-white/80'} backdrop-blur-sm rounded-lg`}>
+                  <div className={`relative ${theme === 'dark' ? 'bg-black/90' : 'bg-white/90'} backdrop-blur-sm rounded-lg`}>
                     <Textarea
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
