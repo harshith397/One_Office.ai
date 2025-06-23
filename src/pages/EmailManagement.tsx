@@ -115,11 +115,6 @@ const EmailManagement = () => {
     return chats.find(chat => chat.id === activeChat);
   };
 
-  const getCurrentChatTitle = () => {
-    const currentChat = getCurrentChat();
-    return currentChat?.title || 'New Chat';
-  };
-
   return (
     <div className={`min-h-screen ${theme === 'dark' ? 'bg-black' : 'bg-white'} relative overflow-hidden flex flex-col`}>
       <Navigation />
@@ -143,7 +138,7 @@ const EmailManagement = () => {
 
       <div className="flex flex-1 pt-20 relative z-10">
         {/* Sidebar */}
-        <div className={`${sidebarOpen ? 'w-80' : 'w-0'} transition-all duration-300 ${theme === 'dark' ? 'bg-black/40' : 'bg-white/40'} backdrop-blur-md border-r ${theme === 'dark' ? 'border-white/10' : 'border-gray-200/30'} flex flex-col overflow-hidden`}>
+        <div className={`${sidebarOpen ? 'w-80' : 'w-0'} transition-all duration-300 ${theme === 'dark' ? 'bg-black/60' : 'bg-white/60'} backdrop-blur-md border-r ${theme === 'dark' ? 'border-white/20' : 'border-gray-200/40'} flex flex-col overflow-hidden`}>
           <div className="p-4 border-b border-inherit">
             <button 
               onClick={createNewChat}
@@ -166,7 +161,7 @@ const EmailManagement = () => {
                   className={`p-3 rounded-lg cursor-pointer transition-all duration-200 group ${
                     activeChat === chat.id 
                       ? 'bg-gradient-to-r from-purple-600/20 to-pink-600/20 border border-purple-500/30' 
-                      : theme === 'dark' ? 'hover:bg-white/5' : 'hover:bg-gray-100/50'
+                      : theme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-gray-100/60'
                   }`}
                 >
                   <div className="flex items-center justify-between">
@@ -175,7 +170,7 @@ const EmailManagement = () => {
                     </h4>
                     <ChevronRight size={14} className={`${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} opacity-0 group-hover:opacity-100 transition-opacity`} />
                   </div>
-                  <span className={`text-xs ${theme === 'dark' ? 'text-gray-500' : 'text-gray-500'} mt-1 block`}>
+                  <span className={`text-xs ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'} mt-1 block`}>
                     {chat.timestamp}
                   </span>
                 </div>
@@ -186,19 +181,14 @@ const EmailManagement = () => {
 
         {/* Main Content */}
         <div className="flex-1 flex flex-col">
-          {/* Header */}
-          <div className={`flex items-center justify-between p-4 border-b ${theme === 'dark' ? 'border-white/10' : 'border-gray-200/30'} ${theme === 'dark' ? 'bg-black/20' : 'bg-white/20'} backdrop-blur-md`}>
-            <div className="flex items-center gap-4">
-              <button
-                onClick={() => setSidebarOpen(!sidebarOpen)}
-                className={`p-2 rounded-lg ${theme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-gray-100/50'} transition-colors`}
-              >
-                {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
-              </button>
-              <h1 className={`text-xl font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
-                {getCurrentChatTitle()}
-              </h1>
-            </div>
+          {/* Header with sidebar toggle */}
+          <div className={`flex items-center justify-start p-4 border-b ${theme === 'dark' ? 'border-white/10' : 'border-gray-200/30'} ${theme === 'dark' ? 'bg-black/20' : 'bg-white/20'} backdrop-blur-md`}>
+            <button
+              onClick={() => setSidebarOpen(!sidebarOpen)}
+              className={`p-2 rounded-lg ${theme === 'dark' ? 'hover:bg-white/10 text-white' : 'hover:bg-gray-100/50 text-gray-800'} transition-colors`}
+            >
+              {sidebarOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
           </div>
 
           {/* Chat Area */}
@@ -245,39 +235,46 @@ const EmailManagement = () => {
             {/* Input Area */}
             <div className="p-6">
               <div className="max-w-2xl mx-auto">
-                <div className={`relative ${theme === 'dark' ? 'bg-white/5' : 'bg-gray-50'} rounded-2xl focus-within:ring-0 focus-within:outline-none`}>
-                  <Textarea
-                    value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    placeholder="Ask anything..."
-                    className={`min-h-[120px] max-h-[200px] resize-none border-none ${theme === 'dark' ? 'bg-transparent text-white placeholder-gray-400' : 'bg-transparent text-gray-800 placeholder-gray-500'} focus:ring-0 focus-visible:ring-0 focus-visible:outline-none pr-20 scrollbar-thin ${theme === 'dark' ? 'scrollbar-thumb-gray-600 scrollbar-track-transparent' : 'scrollbar-thumb-gray-400 scrollbar-track-transparent'}`}
-                    onKeyPress={(e) => {
-                      if (e.key === 'Enter' && !e.shiftKey) {
-                        e.preventDefault();
-                        handleSendMessage();
-                      }
-                    }}
-                  />
-                  
-                  <div className="absolute bottom-3 right-3 flex items-center gap-2">
-                    <button
-                      className={`p-2 rounded-lg ${theme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-gray-200'} transition-colors`}
-                      aria-label="Upload file"
-                    >
-                      <Paperclip size={16} className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} />
-                    </button>
+                <div className={`relative rounded-2xl p-1 bg-gradient-to-r from-purple-600 to-pink-600`}>
+                  <div className={`relative ${theme === 'dark' ? 'bg-black' : 'bg-white'} rounded-2xl`}>
+                    <Textarea
+                      value={message}
+                      onChange={(e) => setMessage(e.target.value)}
+                      placeholder="Ask anything..."
+                      className={`min-h-[60px] max-h-[200px] resize-none border-none ${theme === 'dark' ? 'bg-transparent text-white placeholder-gray-400' : 'bg-transparent text-gray-800 placeholder-gray-500'} focus:ring-0 focus-visible:ring-0 focus-visible:outline-none pr-20 rounded-2xl`}
+                      onKeyPress={(e) => {
+                        if (e.key === 'Enter' && !e.shiftKey) {
+                          e.preventDefault();
+                          handleSendMessage();
+                        }
+                      }}
+                      style={{
+                        lineHeight: '1.5',
+                        minHeight: '60px',
+                        maxHeight: `${8 * 1.5 * 16 + 24}px`, // 8 lines * line-height * font-size + padding
+                      }}
+                    />
                     
-                    <button
-                      onClick={handleSendMessage}
-                      disabled={!message.trim()}
-                      className={`p-2 rounded-lg transition-all duration-300 ${
-                        message.trim() 
-                          ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700' 
-                          : theme === 'dark' ? 'bg-white/10 text-gray-500' : 'bg-gray-200 text-gray-400'
-                      }`}
-                    >
-                      <Send size={16} />
-                    </button>
+                    <div className="absolute bottom-3 right-3 flex items-center gap-2">
+                      <button
+                        className={`p-2 rounded-lg ${theme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-gray-200'} transition-colors`}
+                        aria-label="Upload file"
+                      >
+                        <Paperclip size={16} className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} />
+                      </button>
+                      
+                      <button
+                        onClick={handleSendMessage}
+                        disabled={!message.trim()}
+                        className={`p-2 rounded-lg transition-all duration-300 ${
+                          message.trim() 
+                            ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700' 
+                            : theme === 'dark' ? 'bg-white/10 text-gray-500' : 'bg-gray-200 text-gray-400'
+                        }`}
+                      >
+                        <Send size={16} />
+                      </button>
+                    </div>
                   </div>
                 </div>
                 
