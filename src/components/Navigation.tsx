@@ -29,13 +29,6 @@ const Navigation = () => {
           >
             Home
           </Link>
-          <Link 
-            to="/email-management" 
-            className={`${location.pathname === '/email-management' ? 'text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-400' : theme === 'dark' ? 'text-white' : 'text-gray-800'} hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-purple-400 hover:to-pink-400 transition-all duration-300`}
-            style={{ textShadow: theme === 'dark' && location.pathname !== '/email-management' ? '0 1px 2px rgba(0,0,0,0.5)' : 'none' }}
-          >
-            Email Management
-          </Link>
           <a 
             href="#about" 
             className={`${theme === 'dark' ? 'text-white' : 'text-gray-800'} hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-purple-400 hover:to-pink-400 transition-all duration-300`}
@@ -82,9 +75,6 @@ const Navigation = () => {
           <div className="px-6 py-4 space-y-4">
             <Link to="/" className={`block ${theme === 'dark' ? 'text-white hover:text-purple-400' : 'text-gray-800 hover:text-purple-600'} transition-colors`}>
               Home
-            </Link>
-            <Link to="/email-management" className={`block ${theme === 'dark' ? 'text-white hover:text-purple-400' : 'text-gray-800 hover:text-purple-600'} transition-colors`}>
-              Email Management
             </Link>
             <a href="#about" className={`block ${theme === 'dark' ? 'text-white hover:text-purple-400' : 'text-gray-800 hover:text-purple-600'} transition-colors`}>
               About

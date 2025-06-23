@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { FileText, MessageSquare, Shield, Zap, Globe, Users } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
@@ -65,11 +66,11 @@ const Features = () => {
             <div
               key={index}
               onClick={feature.clickable ? feature.onClick : undefined}
-              className={`group p-8 rounded-2xl ${theme === 'dark' ? 'bg-white/5' : 'bg-gray-50/50'} backdrop-blur-sm border ${theme === 'dark' ? 'border-white/10' : 'border-gray-200/50'} hover:border-purple-500/50 transition-all duration-300 ${feature.clickable ? 'cursor-pointer hover:scale-105' : ''}`}
+              className={`group p-8 rounded-2xl ${theme === 'dark' ? 'bg-white/5 hover:bg-white/10' : 'bg-gray-50/80 hover:bg-gray-100/60'} backdrop-blur-sm border ${theme === 'dark' ? 'border-white/10 hover:border-purple-500/50' : 'border-gray-200/50 hover:border-purple-400/40'} transition-all duration-300 ${feature.clickable ? 'cursor-pointer hover:scale-105' : ''}`}
             >
               {/* Icon */}
               <div className="mb-6">
-                <div className="inline-flex p-3 bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-xl group-hover:from-purple-600/30 group-hover:to-pink-600/30 transition-all duration-300">
+                <div className={`inline-flex p-3 rounded-xl transition-all duration-300 ${theme === 'dark' ? 'bg-gradient-to-r from-purple-600/20 to-pink-600/20 group-hover:from-purple-600/30 group-hover:to-pink-600/30' : 'bg-gradient-to-r from-purple-500/15 to-pink-500/15 group-hover:from-purple-500/25 group-hover:to-pink-500/25'}`}>
                   <div className="text-purple-400 group-hover:text-purple-300 transition-colors">
                     {feature.icon}
                   </div>
