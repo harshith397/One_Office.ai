@@ -257,10 +257,6 @@ const EmailManagement = () => {
                         handleSendMessage();
                       }
                     }}
-                    style={{ 
-                      scrollbarWidth: '6px',
-                      scrollbarColor: theme === 'dark' ? '#4B5563 transparent' : '#9CA3AF transparent'
-                    }}
                   />
                   
                   <div className="absolute bottom-3 right-3 flex items-center gap-2">
