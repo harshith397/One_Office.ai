@@ -139,6 +139,28 @@ const EmailManagement = () => {
 
   return (
     <div className={`h-screen ${theme === 'dark' ? 'bg-black' : 'bg-white'} relative overflow-hidden flex flex-col`}>
+      {/* Custom scrollbar styles */}
+      <style jsx>{`
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: ${theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'};
+          border-radius: 3px;
+          transition: background 0.3s ease;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: ${theme === 'dark' ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)'};
+        }
+        .custom-scrollbar {
+          scrollbar-width: thin;
+          scrollbar-color: ${theme === 'dark' ? 'rgba(255, 255, 255, 0.1) transparent' : 'rgba(0, 0, 0, 0.1) transparent'};
+        }
+      `}</style>
+
       {/* Header */}
       <nav className={`flex-shrink-0 px-6 py-4 ${theme === 'dark' ? 'bg-black/20' : 'bg-white/20'} backdrop-blur-md ${theme === 'dark' ? 'border-white/10' : 'border-gray-200/30'} border-b w-full`}>
         <div className="max-w-7xl mx-auto flex items-center justify-between">
@@ -181,7 +203,7 @@ const EmailManagement = () => {
             </button>
           </div>
 
-          <div className="flex-1 overflow-y-auto p-4">
+          <div className="flex-1 overflow-y-auto p-4 custom-scrollbar">
             <div className="space-y-2">
               {chats.map((chat) => (
                 <div key={chat.id} onClick={() => { setActiveChat(chat.id); setSidebarOpen(false); }} className={`p-3 rounded-lg cursor-pointer transition-all duration-200 group ${activeChat === chat.id ? 'bg-gradient-to-r from-purple-600/20 to-pink-600/20 border border-purple-500/30' : theme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-gray-100/60'}`}>
@@ -227,7 +249,7 @@ const EmailManagement = () => {
                 <div 
                   ref={chatContainerRef} 
                   onScroll={handleScroll} 
-                  className="h-full overflow-y-auto"
+                  className="h-full overflow-y-auto custom-scrollbar"
                   style={{ 
                     scrollBehavior: 'smooth',
                     paddingBottom: '1rem'
@@ -267,7 +289,7 @@ const EmailManagement = () => {
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         placeholder="Ask anything..."
-                        className={`min-h-[60px] max-h-[200px] resize-none border-none ${theme === 'dark' ? 'bg-transparent text-white placeholder-gray-400' : 'bg-transparent text-gray-800 placeholder-gray-500'} focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0 focus:outline-none pr-20 rounded-lg`}
+                        className={`min-h-[60px] max-h-[200px] resize-none border-none ${theme === 'dark' ? 'bg-transparent text-white placeholder-gray-400' : 'bg-transparent text-gray-800 placeholder-gray-500'} focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0 focus:outline-none pr-20 rounded-lg custom-scrollbar`}
                         onKeyPress={(e) => {
                           if (e.key === 'Enter' && !e.shiftKey) {
                             e.preventDefault();
@@ -311,7 +333,7 @@ const EmailManagement = () => {
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       placeholder="Ask anything..."
-                      className={`min-h-[60px] max-h-[200px] resize-none border-none ${theme === 'dark' ? 'bg-transparent text-white placeholder-gray-400' : 'bg-transparent text-gray-800 placeholder-gray-500'} focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0 focus:outline-none pr-20 rounded-lg`}
+                      className={`min-h-[60px] max-h-[200px] resize-none border-none ${theme === 'dark' ? 'bg-transparent text-white placeholder-gray-400' : 'bg-transparent text-gray-800 placeholder-gray-500'} focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0 focus:outline-none pr-20 rounded-lg custom-scrollbar`}
                       onKeyPress={(e) => {
                         if (e.key === 'Enter' && !e.shiftKey) {
                           e.preventDefault();
