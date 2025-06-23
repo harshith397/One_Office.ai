@@ -1,115 +1,99 @@
 
 import React from 'react';
-import { Shield, FileText, Headphones, BarChart2, MailOpen, Plug, BookOpen } from 'lucide-react';
+import { FileText, MessageSquare, Shield, Zap, Globe, Users } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { useTheme } from '../contexts/ThemeContext';
 
 const Features = () => {
   const { theme } = useTheme();
-  
+  const navigate = useNavigate();
+
   const features = [
     {
-      icon: FileText,
-      title: "Smart Document Conversion",
-      description: "Convert documents across 50+ formats with AI-powered accuracy. Maintain formatting, extract data intelligently, and process thousands of files simultaneously with enterprise-grade reliability."
+      icon: <FileText className="w-8 h-8" />,
+      title: 'AI Email Management',
+      description: 'Transform your email workflow with intelligent composition, smart replies, and automated summarization.',
+      clickable: true,
+      onClick: () => navigate('/email-management')
     },
     {
-      icon: MailOpen,
-      title: "AI Email Management",
-      description: "Generate contextual emails, automate responses, and manage communications with intelligent categorization. Our AI understands your business tone and maintains professional consistency."
+      icon: <MessageSquare className="w-8 h-8" />,
+      title: 'Document Conversion',
+      description: 'Convert documents seamlessly across formats with AI-powered precision and formatting preservation.',
+      clickable: false
     },
     {
-      icon: Shield,
-      title: "Enterprise Security",
-      description: "Complete data sovereignty with on-premise deployment. Zero data leaves your infrastructure. Military-grade encryption ensures your sensitive information stays absolutely secure."
+      icon: <Shield className="w-8 h-8" />,
+      title: 'Enterprise Security',
+      description: 'Bank-grade encryption with fully offline capabilities ensuring your data never leaves your environment.',
+      clickable: false
     },
     {
-      icon: Headphones,
-      title: "24/7 Support",
-      description: "Round-the-clock premium support from our expert team whenever you need assistance."
+      icon: <Zap className="w-8 h-8" />,
+      title: 'RAG Technology',
+      description: 'Advanced retrieval-augmented generation for intelligent document analysis and contextual responses.',
+      clickable: false
     },
     {
-      icon: BarChart2,
-      title: "Advanced Analytics",
-      description: "Comprehensive insights into document workflows, email patterns, and productivity metrics. Make data-driven decisions with detailed reports and real-time dashboards."
+      icon: <Globe className="w-8 h-8" />,
+      title: 'Multi-Language Support',
+      description: 'Process documents and emails in over 50 languages with native AI understanding.',
+      clickable: false
     },
     {
-      icon: Plug,
-      title: "Seamless Integration",
-      description: "Connect with your existing enterprise tools via robust APIs. Works with Microsoft 365, Google Workspace, Slack, and 100+ business applications out of the box."
-    },
-    {
-      icon: BookOpen,
-      title: "RAG Document Intelligence",
-      description: "Intelligent document summarization and Q&A with advanced RAG technology. Extract insights, generate summaries, and find information across your entire document ecosystem instantly."
-    },
-    {
-      icon: Shield,
-      title: "Online & Offline Enterprise Access",
-      description: "Enjoy uninterrupted productivity with both online and offline access to all enterprise tools. Our platform ensures seamless operation, robust security, and full functionality—whether you're connected to the cloud or working locally within your secure infrastructure."
+      icon: <Users className="w-8 h-8" />,
+      title: 'Team Collaboration',
+      description: 'Streamlined workflows with role-based access controls and collaborative document management.',
+      clickable: false
     }
   ];
 
   return (
-    <section id="features" className="px-6 py-20">
+    <section id="features" className="px-6 py-20 lg:py-32">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 
-            className={`text-3xl md:text-5xl font-regular ${theme === 'dark' ? 'text-white' : 'text-gray-900'} mb-4`}
-            style={{ textShadow: theme === 'dark' ? '0 2px 4px rgba(0,0,0,0.7)' : 'none' }}
-          >
-            Why Choose 
-            <span
-              className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent ml-3"
-              style={{ textShadow: 'none' }}
-            >
-              One_Office.ai
-            </span>
+          <h2 className={`text-3xl md:text-4xl lg:text-5xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'} mb-6`} style={{ textShadow: theme === 'dark' ? '0 2px 4px rgba(0,0,0,0.5)' : 'none' }}>
+            Powerful Features for
+            <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"> Enterprise Success</span>
           </h2>
-          <p 
-            className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} max-w-2xl mx-auto`}
-            style={{ textShadow: theme === 'dark' ? '0 1px 2px rgba(0,0,0,0.5)' : 'none' }}
-          >
-            Discover the advanced AI capabilities that make us the preferred choice for enterprise leaders seeking secure, efficient, and intelligent office automation.
+          <p className={`text-xl ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} max-w-3xl mx-auto`} style={{ textShadow: theme === 'dark' ? '0 1px 2px rgba(0,0,0,0.5)' : 'none' }}>
+            Discover the comprehensive suite of AI-powered tools designed to revolutionize your business operations and boost productivity.
           </p>
         </div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {features.map((feature, index) => {
-            const IconComponent = feature.icon;
-            return (
-              <div 
-                key={index}
-                className="group bg-gradient-to-br from-purple-600/10 to-pink-600/10 backdrop-blur-sm border border-purple-500/20 rounded-2xl p-6 hover:border-purple-400/40 transition-all duration-300 hover:transform hover:scale-105"
-              >
-                <div className="bg-gradient-to-r from-purple-600 to-pink-600 w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:shadow-lg group-hover:shadow-purple-500/25 transition-all duration-300">
-                  <IconComponent size={24} className="text-white" />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {features.map((feature, index) => (
+            <div
+              key={index}
+              onClick={feature.clickable ? feature.onClick : undefined}
+              className={`group p-8 rounded-2xl ${theme === 'dark' ? 'bg-white/5' : 'bg-gray-50/50'} backdrop-blur-sm border ${theme === 'dark' ? 'border-white/10' : 'border-gray-200/50'} hover:border-purple-500/50 transition-all duration-300 ${feature.clickable ? 'cursor-pointer hover:scale-105' : ''}`}
+            >
+              {/* Icon */}
+              <div className="mb-6">
+                <div className="inline-flex p-3 bg-gradient-to-r from-purple-600/20 to-pink-600/20 rounded-xl group-hover:from-purple-600/30 group-hover:to-pink-600/30 transition-all duration-300">
+                  <div className="text-purple-400 group-hover:text-purple-300 transition-colors">
+                    {feature.icon}
+                  </div>
                 </div>
-                
-                <h3 
-                  className={`text-xl font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-900'} mb-3`}
-                  style={{ textShadow: theme === 'dark' ? '0 1px 2px rgba(0,0,0,0.5)' : 'none' }}
-                >
-                  {feature.title}
-                </h3>
-                
-                <p 
-                  className={`${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} leading-relaxed`}
-                  style={{ textShadow: theme === 'dark' ? '0 1px 2px rgba(0,0,0,0.5)' : 'none' }}
-                >
-                  {feature.description}
-                </p>
               </div>
-            );
-          })}
-        </div>
 
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <button className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-4 rounded-full hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-2xl hover:shadow-purple-500/25 transform hover:scale-105 font-semibold">
-            Explore All Features
-          </button>
+              {/* Content */}
+              <h3 className={`text-xl font-semibold ${theme === 'dark' ? 'text-white' : 'text-gray-900'} mb-4 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-400 transition-all duration-300`} style={{ textShadow: theme === 'dark' ? '0 1px 2px rgba(0,0,0,0.5)' : 'none' }}>
+                {feature.title}
+              </h3>
+              <p className={`${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} leading-relaxed`} style={{ textShadow: theme === 'dark' ? '0 1px 2px rgba(0,0,0,0.5)' : 'none' }}>
+                {feature.description}
+              </p>
+
+              {feature.clickable && (
+                <div className="mt-4 text-purple-400 text-sm font-medium group-hover:text-purple-300 transition-colors">
+                  Click to explore →
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </section>
