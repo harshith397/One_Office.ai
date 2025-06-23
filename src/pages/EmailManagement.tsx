@@ -32,7 +32,9 @@ const EmailManagement = () => {
       title: 'Housewarming Ceremony',
       messages: [
         { id: '1', role: 'user', content: 'Help me create an invitation email for my housewarming ceremony', timestamp: '2 hours ago' },
-        { id: '2', role: 'assistant', content: 'I\'d be happy to help you create a housewarming invitation email! Here\'s a warm and inviting template...', timestamp: '2 hours ago' }
+        { id: '2', role: 'assistant', content: 'I\'d be happy to help you create a housewarming invitation email! Here\'s a warm and inviting template:\n\nSubject: You\'re Invited to Our Housewarming Celebration! 🏡\n\nDear [Name],\n\nWe\'re excited to invite you to celebrate our new home with us! After months of planning and decorating, we\'re finally ready to share our space with the people who matter most to us.\n\n📅 Date: [Date]\n⏰ Time: [Time]\n📍 Address: [Your Address]\n\nJoin us for an evening of good food, great company, and a tour of our new place. We\'ll have appetizers, drinks, and plenty of stories about our moving adventures!\n\nPlease RSVP by [Date] so we can plan accordingly.\n\nWe can\'t wait to see you and share this special milestone with you!\n\nWarm regards,\n[Your Names]', timestamp: '2 hours ago' },
+        { id: '3', role: 'user', content: 'That\'s perfect! Can you make it a bit more casual and add something about bringing a dish?', timestamp: '2 hours ago' },
+        { id: '4', role: 'assistant', content: 'Absolutely! Here\'s a more casual version with a potluck element:\n\nSubject: Come Party at Our New Place! 🎉\n\nHey [Name]!\n\nGuess what? We finally got all our boxes unpacked (well, mostly 😅) and we\'re ready to show off our new digs!\n\nYou\'re invited to our housewarming party:\n📅 [Date]\n⏰ [Time] \n📍 [Your Address]\n\nWe\'re doing a casual potluck style - if you could bring a dish to share, that would be awesome! We\'ve got drinks covered and will have some snacks, but the more food the merrier!\n\nCome ready to eat, drink, laugh, and get the full house tour (including the closet we\'re pretending is organized).\n\nJust shoot us a text to let us know you\'re coming!\n\nCan\'t wait to celebrate with you!\n\n[Your Names]', timestamp: '2 hours ago' }
       ],
       timestamp: '2 hours ago'
     },
@@ -40,7 +42,8 @@ const EmailManagement = () => {
       id: '2',
       title: 'Business Reply Email',
       messages: [
-        { id: '3', role: 'user', content: 'Generate a professional reply to a business proposal', timestamp: '1 day ago' }
+        { id: '5', role: 'user', content: 'Generate a professional reply to a business proposal', timestamp: '1 day ago' },
+        { id: '6', role: 'assistant', content: 'I\'d be happy to help you craft a professional business proposal reply. Here\'s a template:\n\nSubject: Re: [Original Proposal Subject]\n\nDear [Name],\n\nThank you for taking the time to present your proposal for [project/service]. We appreciate the detailed information and the effort you\'ve put into understanding our needs.\n\nAfter careful review with our team, we are [interested in moving forward/need some clarifications/have some concerns]. \n\n[If interested]: We would like to schedule a follow-up meeting to discuss the next steps and finalize the details.\n\n[If need clarifications]: We have a few questions regarding [specific areas] that we\'d like to address before making a decision.\n\n[If declining]: While your proposal has merit, we\'ve decided to pursue a different direction at this time.\n\nWe will be in touch by [date] with our decision/next steps.\n\nThank you again for your time and consideration.\n\nBest regards,\n[Your Name]\n[Your Title]\n[Company Name]', timestamp: '1 day ago' }
       ],
       timestamp: '1 day ago'
     },
@@ -48,7 +51,8 @@ const EmailManagement = () => {
       id: '3',
       title: 'Email Summary',
       messages: [
-        { id: '4', role: 'user', content: 'Please summarize this long email thread for me', timestamp: '3 days ago' }
+        { id: '7', role: 'user', content: 'Please summarize this long email thread for me', timestamp: '3 days ago' },
+        { id: '8', role: 'assistant', content: 'I\'d be happy to help summarize your email thread! Please paste the email content you\'d like me to summarize, and I\'ll provide you with:\n\n• Key points and decisions made\n• Action items and deadlines\n• Important participants and their roles\n• Next steps or follow-up required\n\nJust share the email thread and I\'ll create a clear, concise summary for you.', timestamp: '3 days ago' }
       ],
       timestamp: '3 days ago'
     }
@@ -134,9 +138,9 @@ const EmailManagement = () => {
   };
 
   return (
-    <div className={`min-h-screen ${theme === 'dark' ? 'bg-black' : 'bg-white'} relative overflow-hidden flex flex-col`}>
+    <div className={`h-screen ${theme === 'dark' ? 'bg-black' : 'bg-white'} relative overflow-hidden flex flex-col`}>
       {/* Header */}
-      <nav className={`fixed top-0 left-0 right-0 z-50 px-6 py-4 ${theme === 'dark' ? 'bg-black/20' : 'bg-white/20'} backdrop-blur-md ${theme === 'dark' ? 'border-white/10' : 'border-gray-200/30'} border-b w-full`}>
+      <nav className={`flex-shrink-0 px-6 py-4 ${theme === 'dark' ? 'bg-black/20' : 'bg-white/20'} backdrop-blur-md ${theme === 'dark' ? 'border-white/10' : 'border-gray-200/30'} border-b w-full`}>
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-4">
             <button
@@ -167,10 +171,10 @@ const EmailManagement = () => {
       <div className="fixed top-0 right-0 w-[300px] h-[300px] opacity-20 z-0" style={{ background: 'radial-gradient(circle at 100% 0%, #3B0764 0%, #B32C76 40%, transparent 70%)', filter: 'blur(20px)' }} />
       <div className="fixed bottom-0 left-0 w-[300px] h-[300px] opacity-20 z-0" style={{ background: 'radial-gradient(circle at 0% 100%, #3B0764 0%, #B32C76 40%, transparent 70%)', filter: 'blur(20px)' }} />
 
-      <div className="flex flex-1 pt-20 relative z-10">
+      <div className="flex flex-1 relative z-10 overflow-hidden">
         {/* Sidebar */}
-        <div className={`${sidebarOpen ? 'w-80' : 'w-0'} transition-all duration-300 ${theme === 'dark' ? 'bg-black/80' : 'bg-white/80'} backdrop-blur-md border-r ${theme === 'dark' ? 'border-white/20' : 'border-gray-200/40'} flex flex-col overflow-hidden`}>
-          <div className="p-4 border-b border-inherit">
+        <div className={`${sidebarOpen ? 'w-80' : 'w-0'} transition-all duration-300 ${theme === 'dark' ? 'bg-black/80' : 'bg-white/80'} backdrop-blur-md border-r ${theme === 'dark' ? 'border-white/20' : 'border-gray-200/40'} flex flex-col overflow-hidden flex-shrink-0`}>
+          <div className="p-4 border-b border-inherit flex-shrink-0">
             <button onClick={createNewChat} className="w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-3 rounded-lg hover:from-purple-700 hover:to-pink-700 transition-all duration-300 flex items-center gap-2 shadow-lg">
               <Plus size={18} />
               New Chat
@@ -196,56 +200,110 @@ const EmailManagement = () => {
         </div>
 
         {/* Main Content */}
-        <div className="flex-1 flex flex-col">
-          {/* Chat Area */}
-          <div className="flex-1 flex flex-col relative">
-            {!activeChat ? (
-              /* Welcome Screen */
-              <div className="flex-1 flex flex-col items-center justify-center p-8">
-                <div className="text-center mb-8">
-                  <h1 className={`text-4xl md:text-5xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'} mb-4`}>
-                    <span style={{ textShadow: theme === 'dark' ? '0 2px 4px rgba(0,0,0,0.7)' : 'none' }}>
-                      Email Management
-                    </span>
-                    <br />
-                    <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                      Assistant
-                    </span>
-                  </h1>
-                  <p className={`text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} max-w-2xl mx-auto`} style={{ textShadow: theme === 'dark' ? '0 1px 2px rgba(0,0,0,0.5)' : 'none' }}>
-                    What are you working on?
-                  </p>
-                </div>
+        <div className="flex-1 flex flex-col min-w-0">
+          {!activeChat ? (
+            /* Welcome Screen */
+            <div className="flex-1 flex flex-col items-center justify-center p-8">
+              <div className="text-center mb-8">
+                <h1 className={`text-4xl md:text-5xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'} mb-4`}>
+                  <span style={{ textShadow: theme === 'dark' ? '0 2px 4px rgba(0,0,0,0.7)' : 'none' }}>
+                    Email Management
+                  </span>
+                  <br />
+                  <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                    Assistant
+                  </span>
+                </h1>
+                <p className={`text-lg ${theme === 'dark' ? 'text-gray-300' : 'text-gray-600'} max-w-2xl mx-auto`} style={{ textShadow: theme === 'dark' ? '0 1px 2px rgba(0,0,0,0.5)' : 'none' }}>
+                  What are you working on?
+                </p>
               </div>
-            ) : (
-              /* Chat Messages */
-              <div className="flex-1 relative">
-                <ScrollArea className="h-full">
-                  <div ref={chatContainerRef} onScroll={handleScroll} className="p-6 h-full">
+            </div>
+          ) : (
+            /* Chat Interface with Dashboard Layout */
+            <>
+              {/* Chat Messages Area - Scrollable */}
+              <div className="flex-1 overflow-hidden relative">
+                <div 
+                  ref={chatContainerRef} 
+                  onScroll={handleScroll} 
+                  className="h-full overflow-y-auto"
+                  style={{ 
+                    scrollBehavior: 'smooth',
+                    paddingBottom: '1rem'
+                  }}
+                >
+                  <div className="p-6">
                     <div className="max-w-3xl mx-auto space-y-6">
                       {getCurrentChat()?.messages.map((msg) => (
                         <div key={msg.id} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                           <div className={`max-w-[80%] ${msg.role === 'user' ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white' : theme === 'dark' ? 'bg-white/5 text-white' : 'bg-gray-100 text-gray-900'} rounded-xl px-4 py-3`}>
-                            <p className="text-sm leading-relaxed">{msg.content}</p>
+                            <p className="text-sm leading-relaxed whitespace-pre-wrap">{msg.content}</p>
                           </div>
                         </div>
                       ))}
                       <div ref={messagesEndRef} />
                     </div>
                   </div>
-                </ScrollArea>
+                </div>
 
                 {/* Scroll to bottom button */}
                 {showScrollToBottom && (
-                  <button onClick={scrollToBottom} className={`absolute bottom-24 right-6 p-3 rounded-full ${theme === 'dark' ? 'bg-white/10 hover:bg-white/20' : 'bg-gray-100 hover:bg-gray-200'} backdrop-blur-sm transition-all duration-300 shadow-lg z-10`}>
+                  <button 
+                    onClick={scrollToBottom} 
+                    className={`absolute bottom-4 right-6 p-3 rounded-full ${theme === 'dark' ? 'bg-white/10 hover:bg-white/20' : 'bg-gray-100 hover:bg-gray-200'} backdrop-blur-sm transition-all duration-300 shadow-lg z-10`}
+                  >
                     <ChevronDown size={20} className={theme === 'dark' ? 'text-white' : 'text-gray-800'} />
                   </button>
                 )}
               </div>
-            )}
 
-            {/* Fixed Input Area */}
-            <div className="p-6 border-t border-transparent">
+              {/* Sticky Input Area */}
+              <div className={`flex-shrink-0 p-6 border-t ${theme === 'dark' ? 'border-white/10 bg-black/50' : 'border-gray-200/40 bg-white/50'} backdrop-blur-md`}>
+                <div className="max-w-3xl mx-auto">
+                  <div className="relative p-0.5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg">
+                    <div className={`relative ${theme === 'dark' ? 'bg-black' : 'bg-white'} rounded-lg`}>
+                      <Textarea
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                        placeholder="Ask anything..."
+                        className={`min-h-[60px] max-h-[200px] resize-none border-none ${theme === 'dark' ? 'bg-transparent text-white placeholder-gray-400' : 'bg-transparent text-gray-800 placeholder-gray-500'} focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0 focus:outline-none pr-20 rounded-lg`}
+                        onKeyPress={(e) => {
+                          if (e.key === 'Enter' && !e.shiftKey) {
+                            e.preventDefault();
+                            handleSendMessage();
+                          }
+                        }}
+                        style={{
+                          lineHeight: '1.5',
+                          minHeight: '60px',
+                          maxHeight: `${8 * 1.5 * 16 + 24}px`,
+                        }}
+                      />
+                      
+                      <div className="absolute bottom-3 right-3 flex items-center gap-2">
+                        <button className={`p-2 rounded-lg ${theme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-gray-200'} transition-colors`} aria-label="Upload file">
+                          <Paperclip size={16} className={theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} />
+                        </button>
+                        
+                        <button onClick={handleSendMessage} disabled={!message.trim()} className={`p-2 rounded-lg transition-all duration-300 ${message.trim() ? 'bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:from-purple-700 hover:to-pink-700' : theme === 'dark' ? 'bg-white/10 text-gray-500' : 'bg-gray-200 text-gray-400'}`}>
+                          <Send size={16} />
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <p className={`text-xs ${theme === 'dark' ? 'text-gray-500' : 'text-gray-500'} text-center mt-2`}>
+                    Upload emails to generate replies or get summaries
+                  </p>
+                </div>
+              </div>
+            </>
+          )}
+
+          {/* Input Area for Welcome Screen */}
+          {!activeChat && (
+            <div className={`flex-shrink-0 p-6 border-t ${theme === 'dark' ? 'border-white/10 bg-black/50' : 'border-gray-200/40 bg-white/50'} backdrop-blur-md`}>
               <div className="max-w-2xl mx-auto">
                 <div className="relative p-0.5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg">
                   <div className={`relative ${theme === 'dark' ? 'bg-black' : 'bg-white'} rounded-lg`}>
@@ -284,7 +342,7 @@ const EmailManagement = () => {
                 </p>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>
