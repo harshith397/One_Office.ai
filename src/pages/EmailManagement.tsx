@@ -152,16 +152,16 @@ const EmailManagement = () => {
           background: transparent;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: #fff;
+          background: ${theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'};
           border-radius: 3px;
           transition: background 0.3s ease;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: #fff;
+          background: ${theme === 'dark' ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)'};
         }
         .custom-scrollbar {
           scrollbar-width: thin;
-          scrollbar-color: #fff transparent;
+          scrollbar-color: ${theme === 'dark' ? 'rgba(255, 255, 255, 0.1) transparent' : 'rgba(0, 0, 0, 0.1) transparent'};
         }
       `}</style>
 
@@ -268,16 +268,7 @@ const EmailManagement = () => {
                     </div>
                   </div>
                 </div>
-                {/* Shadow separator between chat and chat box */}
-                <div
-                  className="pointer-events-none absolute left-0 right-0 bottom-0 h-6 z-20"
-                  style={{
-                    boxShadow: '0 8px 24px 0 rgba(0,0,0,0.18)',
-                    borderBottomLeftRadius: '1rem',
-                    borderBottomRightRadius: '1rem',
-                    opacity: 0.7,
-                  }}
-                />
+
                 {/* Scroll to bottom button */}
                 {showScrollToBottom && (
                   <button 
@@ -292,28 +283,16 @@ const EmailManagement = () => {
               {/* Input Area - Only the input box has background */}
               <div className="flex-shrink-0 p-6">
                 <div className="max-w-3xl mx-auto">
-                  {/* Add shadow above the chat box */}
-                  <div className="w-full h-4 -mt-4 mb-2 pointer-events-none">
-                    <div className="w-full h-full rounded-t-xl shadow-[0_-8px_24px_-8px_rgba(0,0,0,0.18)]" />
-                  </div>
                   <div className="relative p-0.5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg">
                     <div className={`relative ${theme === 'dark' ? 'bg-black/90' : 'bg-white/90'} backdrop-blur-sm rounded-lg`}>
                       <Textarea
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         placeholder="Ask anything..."
-                        className={`min-h-[60px] max-h-[200px] resize-none border-none ${theme === 'dark' ? 'bg-transparent text-white placeholder-gray-400' : 'bg-transparent text-gray-800 placeholder-gray-500'} focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0 focus:outline-none pr-20 rounded-lg custom-scrollbar`}
-                        onKeyPress={(e) => {
-                          if (e.key === 'Enter' && !e.shiftKey) {
-                            e.preventDefault();
-                            handleSendMessage();
-                          }
-                        }}
-                        style={{
-                          lineHeight: '1.5',
-                          minHeight: '60px',
-                          maxHeight: `${8 * 1.5 * 16 + 24}px`,
-                        }}
+                        className={`w-full min-h-[60px] max-h-[200px] resize-none border-none bg-transparent
+                          ${theme === 'dark' ? 'text-white placeholder-gray-400' : 'text-gray-800 placeholder-gray-500'}
+                          focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0 focus:outline-none pr-20 rounded-lg custom-scrollbar
+                        `}
                       />
                       
                       <div className="absolute bottom-3 right-3 flex items-center gap-2">
@@ -346,7 +325,10 @@ const EmailManagement = () => {
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       placeholder="Ask anything..."
-                      className={`min-h-[60px] max-h-[200px] resize-none border-none ${theme === 'dark' ? 'bg-transparent text-white placeholder-gray-400' : 'bg-transparent text-gray-800 placeholder-gray-500'} focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0 focus:outline-none pr-20 rounded-lg custom-scrollbar`}
+                      className={`w-full min-h-[60px] max-h-[200px] resize-none border-none bg-transparent
+                        ${theme === 'dark' ? 'text-white placeholder-gray-400' : 'text-gray-800 placeholder-gray-500'}
+                        focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0 focus:outline-none pr-20 rounded-lg custom-scrollbar
+                      `}
                       onKeyPress={(e) => {
                         if (e.key === 'Enter' && !e.shiftKey) {
                           e.preventDefault();
@@ -379,15 +361,6 @@ const EmailManagement = () => {
             </div>
           )}
         </div>
-      </div>
-
-      {/* Gradient separator like Microsoft Copilot */}
-      <div className="w-full h-10 -mt-10 relative pointer-events-none z-10">
-        <div className={`absolute top-0 left-0 right-0 h-full rounded-t-xl ${
-          theme === 'dark'
-            ? 'bg-gradient-to-t from-black/60 via-black/30 to-transparent'
-            : 'bg-gradient-to-t from-gray-300/60 via-white/40 to-transparent'
-        }`} />
       </div>
     </div>
   );
