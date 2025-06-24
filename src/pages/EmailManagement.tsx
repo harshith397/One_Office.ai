@@ -145,25 +145,25 @@ const EmailManagement = () => {
 
       {/* Custom scrollbar styles */}
       <style jsx>{`
-        .custom-scrollbar::-webkit-scrollbar {
-          width: 6px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: transparent;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: ${theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'};
-          border-radius: 3px;
-          transition: background 0.3s ease;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: ${theme === 'dark' ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)'};
-        }
-        .custom-scrollbar {
-          scrollbar-width: thin;
-          scrollbar-color: ${theme === 'dark' ? 'rgba(255, 255, 255, 0.1) transparent' : 'rgba(0, 0, 0, 0.1) transparent'};
-        }
-      `}</style>
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #fff !important;
+    border-radius: 3px;
+    transition: background 0.3s ease;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #fff !important;
+  }
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #fff transparent;
+  }
+`}</style>
 
       {/* Header */}
       <nav className={`flex-shrink-0 px-6 py-4 ${theme === 'dark' ? 'bg-black/20' : 'bg-white/20'} backdrop-blur-md ${theme === 'dark' ? 'border-white/10' : 'border-gray-200/30'} border-b w-full relative z-50`}>
