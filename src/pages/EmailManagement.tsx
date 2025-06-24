@@ -293,6 +293,12 @@ const EmailManagement = () => {
                           ${theme === 'dark' ? 'text-white placeholder-gray-400' : 'text-gray-800 placeholder-gray-500'}
                           focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0 focus:outline-none pr-20 rounded-lg custom-scrollbar
                         `}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' && !e.shiftKey) {
+                            e.preventDefault();
+                            handleSendMessage();
+                          }
+                        }}
                       />
                       
                       <div className="absolute bottom-3 right-3 flex items-center gap-2">
@@ -329,7 +335,7 @@ const EmailManagement = () => {
                         ${theme === 'dark' ? 'text-white placeholder-gray-400' : 'text-gray-800 placeholder-gray-500'}
                         focus:ring-0 focus-visible:ring-0 focus-visible:ring-offset-0 focus:outline-none pr-20 rounded-lg custom-scrollbar
                       `}
-                      onKeyPress={(e) => {
+                      onKeyDown={(e) => {
                         if (e.key === 'Enter' && !e.shiftKey) {
                           e.preventDefault();
                           handleSendMessage();
