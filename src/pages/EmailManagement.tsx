@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Send, Plus, Menu, X, Paperclip, ChevronDown } from 'lucide-react';
+import { Send, Plus, Menu, X, Paperclip, ChevronDown, Sun, Moon } from 'lucide-react';
 import { useTheme } from '../contexts/ThemeContext';
 import { Textarea } from '../components/ui/textarea';
 import { ScrollArea } from '../components/ui/scroll-area';
@@ -19,7 +19,7 @@ interface Message {
 }
 
 const EmailManagement = () => {
-  const { theme } = useTheme();
+  const { theme, toggleTheme } = useTheme();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [activeChat, setActiveChat] = useState<string | null>(null);
   const [message, setMessage] = useState('');
@@ -183,9 +183,15 @@ const EmailManagement = () => {
           </div>
 
           <div className="flex items-center space-x-4">
-            <button className={`p-2 ${theme === 'dark' ? 'text-white hover:text-purple-400' : 'text-gray-800 hover:text-purple-600'} transition-colors duration-300 rounded-full ${theme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-gray-100/50'}`}>
-              {/* Theme toggle icon would go here */}
+            {/* Theme Toggle Button */}
+            <button
+              onClick={toggleTheme}
+              className={`p-2 ${theme === 'dark' ? 'text-white hover:text-purple-400' : 'text-gray-800 hover:text-purple-600'} transition-colors duration-300 rounded-full ${theme === 'dark' ? 'hover:bg-white/10' : 'hover:bg-gray-100/50'}`}
+              aria-label="Toggle theme"
+            >
+              {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
             </button>
+            
             <button className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-2 rounded-full hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
               Login
             </button>
@@ -282,7 +288,7 @@ const EmailManagement = () => {
 
               {/* Input Area - Only the input box has background */}
               <div className="flex-shrink-0 p-6">
-                <div className="max-w-3xl mx-auto">
+                <div className="max-w-3xl mx-auto w-full">
                   <div className="relative p-0.5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg">
                     <div className={`relative ${theme === 'dark' ? 'bg-black/90' : 'bg-white/90'} backdrop-blur-sm rounded-lg`}>
                       <Textarea
@@ -324,7 +330,7 @@ const EmailManagement = () => {
           {/* Input Area for Welcome Screen */}
           {!activeChat && (
             <div className="flex-shrink-0 p-6">
-              <div className="max-w-2xl mx-auto">
+              <div className="max-w-2xl mx-auto w-full">
                 <div className="relative p-0.5 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg">
                   <div className={`relative ${theme === 'dark' ? 'bg-black/90' : 'bg-white/90'} backdrop-blur-sm rounded-lg`}>
                     <Textarea
